@@ -26,5 +26,5 @@
   name = "github.com/die-net/lrucache"
 
 [[constraint]]
+  branch = "master"
   name = "github.com/gregjones/httpcache"
-  revision = "efb97ba34474a188f31774506c4bb70b00dcde09"

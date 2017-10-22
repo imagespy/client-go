@@ -8,13 +8,14 @@
   revision = "36174c11a4bb5b86413af31527b6a1469426ed06"
 
 [[projects]]
+  branch = "master"
   name = "github.com/gregjones/httpcache"
   packages = ["."]
-  revision = "efb97ba34474a188f31774506c4bb70b00dcde09"
+  revision = "c1f8028e62adb3d518b823a2f8e6a95c38bdd3aa"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "e47d5bbb763ff30f361611b44a6914cb581081f95677f827c1e8c8e02682462e"
+  inputs-digest = "79442142112cc12d01d9873dd982f6f0f893020250f2167a6f6cd88a330c72a0"
   solver-name = "gps-cdcl"
   solver-version = 1
