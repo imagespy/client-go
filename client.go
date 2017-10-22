@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"net/http"
 	"net/url"
 	"time"
@@ -60,8 +61,12 @@ func (r *requester) writeAsJSON(path string, v interface{}) (*http.Response, err
 
 func (r *requester) parseJSON(re io.ReadCloser, v interface{}) error {
 	defer re.Close()
-	decoder := json.NewDecoder(re)
-	err := decoder.Decode(v)
+	b, err := ioutil.ReadAll(re)
+	if err != nil {
+		return err
+	}
+
+	err = json.Unmarshal(b, v)
 	if err != nil {
 		return err
 	}
