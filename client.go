@@ -120,7 +120,7 @@ func NewClientV1() *ClientV1 {
 	cache := lrucache.New(12582912, 0)
 	t := httpcache.NewTransport(cache)
 	t.Transport = httpClient.Transport
-	httpClient.Transport = t.Transport
+	httpClient.Transport = t
 	c.WithHTTPClient(httpClient).WithBaseURL(DefaultAPIEndpoint).WithTimeout("5s")
 	return c
 }
