@@ -5,13 +5,13 @@
   branch = "master"
   name = "github.com/die-net/lrucache"
   packages = ["."]
-  revision = "36174c11a4bb5b86413af31527b6a1469426ed06"
+  revision = "04b9315ab7a61886b4e51dba37a9c7cc14885fae"
 
 [[projects]]
   branch = "master"
   name = "github.com/gregjones/httpcache"
   packages = ["."]
-  revision = "c1f8028e62adb3d518b823a2f8e6a95c38bdd3aa"
+  revision = "2bcd89a1743fd4b373f7370ce8ddc14dfbd18229"
 
 [solve-meta]
   analyzer-name = "dep"
