@@ -14,16 +14,22 @@
   revision = "04b9315ab7a61886b4e51dba37a9c7cc14885fae"
 
 [[projects]]
+  branch = "master"
   name = "github.com/docker/distribution"
-  packages = ["digest","reference"]
-  revision = "48294d928ced5dd9b378f7fd7c6f5da3ff3f2c89"
-  version = "v2.6.2"
+  packages = ["digestset","reference"]
+  revision = "f4118485915abb8b163442717326597908eee6aa"
 
 [[projects]]
   branch = "master"
   name = "github.com/gregjones/httpcache"
   packages = ["."]
   revision = "2bcd89a1743fd4b373f7370ce8ddc14dfbd18229"
+
+[[projects]]
+  name = "github.com/opencontainers/go-digest"
+  packages = ["."]
+  revision = "279bed98673dd5bef374d3b6e4b09e2af76183bf"
+  version = "v1.0.0-rc1"
 
 [[projects]]
   name = "github.com/pmezard/go-difflib"
@@ -40,6 +46,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "751de0157ae4354f56561a4edca8a690faf2d6992e9c6180d4ff4da63772932f"
+  inputs-digest = "a700bb61ae9c5fb2397d91ad412635963b68ccf471d68c0da8ac73c765f77417"
   solver-name = "gps-cdcl"
   solver-version = 1
