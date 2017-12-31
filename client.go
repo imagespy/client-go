@@ -17,7 +17,7 @@ import (
 const (
 	// DefaultAPIEndpoint is the default endpoint of the ImageSpy API.
 	DefaultAPIEndpoint = "https://imagespy.hydrantosaurus.com"
-	version            = "0.1.0"
+	version            = "0.2.0"
 	userAgent          = "imagespy-go/" + version
 )
 
@@ -96,6 +96,7 @@ func (r *requester) send(req *http.Request) (*http.Response, error) {
 // ClientV1 is the client for the Image Spy API version 1.
 type ClientV1 struct {
 	ImageSpy *ImageSpyService
+	Layer    *LayerService
 	r        *requester
 }
 
@@ -131,6 +132,7 @@ func NewClientV1() *ClientV1 {
 	requester := &requester{}
 	c := &ClientV1{
 		ImageSpy: &ImageSpyService{requester: requester},
+		Layer:    &LayerService{requester: requester},
 		r:        requester,
 	}
 	cache := lrucache.New(12582912, 0)
