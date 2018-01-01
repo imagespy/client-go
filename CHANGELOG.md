@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.2.1
+
+Improvements:
+
+* Add specific errors
+
 ## v0.2.0
 
 Features:
