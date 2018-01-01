@@ -57,7 +57,7 @@ func (is *ImageSpyService) Get(name string) (*ImageSpy, error) {
 	case http.StatusNotFound:
 		// TODO: This is only necessary because httpcache only caches when the body is read. Another solution possible?
 		is.requester.parseJSON(resp.Body, struct{}{})
-		return nil, fmt.Errorf("Error retrieving ImageSpy: API returned status code %d", resp.StatusCode)
+		return nil, &NotFoundError{message: fmt.Sprintf("Error retrieving ImageSpy: API returned status code %d", resp.StatusCode)}
 	default:
 		return nil, fmt.Errorf("Error retrieving ImageSpy: API returned status code %d", resp.StatusCode)
 	}

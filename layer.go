@@ -36,7 +36,7 @@ func (ls *LayerService) Get(digest string) (*Layer, error) {
 	case http.StatusNotFound:
 		// TODO: This is only necessary because httpcache only caches when the body is read. Another solution possible?
 		ls.requester.parseJSON(resp.Body, struct{}{})
-		return nil, fmt.Errorf("Error retrieving Layer: No Layer with digest %s exists", digest)
+		return nil, &NotFoundError{message: fmt.Sprintf("Error retrieving Layer: No Layer with digest %s found", digest)}
 
 	default:
 		return nil, fmt.Errorf("Error retrieving Layer: API returned status code %d", resp.StatusCode)
