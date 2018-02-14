@@ -142,3 +142,46 @@ func NewClientV1() *ClientV1 {
 	c.WithHTTPClient(httpClient).WithBaseURL(DefaultAPIEndpoint).WithTimeout("5s").WithRegistryWhitelist(DefaultRegistryWhitelist)
 	return c
 }
+
+type ClientV2 struct {
+	Image *ImageServiceV2
+	Layer *LayerServiceV2
+	r     *requester
+}
+
+// WithBaseURL sets the base URL of the ImageSpy API.
+func (c *ClientV2) WithBaseURL(baseURL string) *ClientV2 {
+	u, _ := url.Parse(baseURL)
+	c.r.baseURL = u
+	return c
+}
+
+// WithHTTPClient sets the http.Client.
+func (c *ClientV2) WithHTTPClient(hc *http.Client) *ClientV2 {
+	c.r.client = hc
+	return c
+}
+
+// WithTimeout sets the timeout of the underlying http.Client.
+func (c *ClientV2) WithTimeout(s string) *ClientV2 {
+	d, _ := time.ParseDuration(s)
+	c.r.client.Timeout = d
+	return c
+}
+
+// NewClientV2 returns a new client for the V2 HTTP API.
+func NewClientV2() *ClientV2 {
+	httpClient := &http.Client{}
+	requester := &requester{}
+	c := &ClientV2{
+		Image: &ImageServiceV2{requester: requester},
+		Layer: &LayerServiceV2{requester: requester},
+		r:     requester,
+	}
+	cache := lrucache.New(12582912, 0)
+	t := httpcache.NewTransport(cache)
+	t.Transport = httpClient.Transport
+	httpClient.Transport = t
+	c.WithHTTPClient(httpClient).WithBaseURL(DefaultAPIEndpoint).WithTimeout("5s")
+	return c
+}

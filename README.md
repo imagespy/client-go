@@ -12,14 +12,14 @@ import (
 )
 
 func main() {
-  client := imagespy.NewClientV1()
-  spy, err := client.ImageSpy.Get("golang:1.9.1")
+  client := imagespy.NewClientV2()
+  img, err := client.Image.Get("golang:1.9.1")
   if err != nil {
     log.Fatal(err)
   }
 
-  log.Println(spy.Name)
-  log.Println(spy.CurrentImage.Tag)
-  log.Println(spy.LatestImage.Tag)
+  log.Println(img.LatestImage.Name)
+  log.Println(img.LatestImage.Digest)
+  log.Println(img.LatestImage.Tags)
 }
 ```

@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.3.0
+
+Features:
+
+* Support `/v2/images` and `/v2/layers` APIs.
+
 ## v0.2.1
 
 Improvements:
